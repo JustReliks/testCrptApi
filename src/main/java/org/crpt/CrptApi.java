@@ -22,9 +22,11 @@ public class CrptApi {
     private static final Logger logger = LoggerFactory.getLogger(CrptApi.class);
 
     private final TimeUnit timeUnit;
+
     private final int requestLimit;
 
     private final Set<Long> requests;
+
     private final Object lock = new Object();
 
 
@@ -64,6 +66,7 @@ public class CrptApi {
             return answer;
         } catch (Exception e) {
             logger.error("Document creation error", e);
+
             throw new CreateDocumentException(e);
         }
     }
